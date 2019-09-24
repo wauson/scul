@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title> Project world</title>
+    <meta name="description" content="Porject 1 draft">
+    <script src="https://aframe.io/releases/0.9.0/aframe.min.js"></script>
+     <script src="https://unpkg.com/aframe-event-set-component@4.2.1/dist/aframe-event-set-component.min.js"></script>
+    <script src="https://unpkg.com/aframe-environment-component@1.1.0/dist/aframe-environment-component.min.js"></script> 
+     <script src="https://unpkg.com/aframe-mountain-component@^0.3.2/aframe-mountain-component.min.js"></script>
+    <script src="https://unpkg.com/aframe-layout-component@4.3.1/dist/aframe-layout-component.min.js"></script>
+  <script src="https://rawgit.com/takahirox/aframe-rain/master/build/aframe-rain.min.js"></script>
+    <script src="https://unpkg.com/aframe-animation-component@^4.1.2/dist/aframe-animation-component.min.js"></script>
+    <script src="https://unpkg.com/aframe-teleport-controls@0.2.x/dist/aframe-teleport-controls.min.js"></script>
+<script src="https://unpkg.com/aframe-controller-cursor-component@0.2.x/dist/aframe-controller-cursor-component.min.js"></script>
+<script src="https://rawgit.com/ngokevin/kframe/csstricks/scenes/aincraft/components/random-color.js"></script>
+<script src="https://rawgit.com/ngokevin/kframe/csstricks/scenes/aincraft/components/snap.js"></script>
+<script src="https://rawgit.com/ngokevin/kframe/csstricks/scenes/aincraft/components/intersection-spawn.js"></script>
+    <script src="https://unpkg.com/super-hands@3.0.0/dist/super-hands.min.js"></script>
+  </head>
+  
+  <body>
+    <a-assets>
+      <img id="stone" src="https://cdn.glitch.com/cef977b8-48dc-440b-9704-8db3d0cfb305%2Fstone.jpg?v=1568145273574">
+    </a-assets>
+    <a-scene rain>
+      <!--<a-box color="green" position="0 0 -3.5"
+           event-set__click="material.color: red; scale: 2 2 2;"
+           event-set__mouseenter="material.color: blue; scale:0.5 0.5 0.5"></a-box> -->
+
+    <a-camera>
+      <a-cursor intersection-spawn="event: click; mixin: voxel"></a-cursor>
+    </a-camera>
+      <!--
+      <a-entity environment="preset: goaland; dressing: towers; skyType: gradient; skyColor: green; horizonColor: grey; dressingAmount: 220; ground: canyon"></a-entity>
+      -->
+      <!-- entry ring -->
+      <a-entity layout="type: circle; radius: 5" position="0 4 -6">
+        <a-entity geometry="primitive: dodecahedron" material 
+                  event-set__mouseenter="material.color:lightblue"></a-entity>
+        <a-entity geometry="primitive: dodecahedron" material
+                   event-set__mouseenter="material.color:blue"></a-entity>
+        <a-entity geometry="primitive: dodecahedron" material
+                  event-set__mouseenter="material.color:lightgreen"></a-entity>
+        <a-entity geometry="primitive: dodecahedron" material
+                  event-set__mouseenter="material.color:green"></a-entity>
+        <a-entity geometry="primitive: dodecahedron" material
+                  event-set__mouseenter="material.color:lightyellow"></a-entity>
+        <a-entity geometry="primitive: dodecahedron" material
+                  event-set__mouseenter="material.color:orange"></a-entity>
+        <a-entity geometry="primitive: dodecahedron" material
+                  event-set__mouseenter="material.color:pink"></a-entity>
+        <a-entity geometry="primitive: dodecahedron" material
+                  event-set__mouseenter="material.color:red"></a-entity>
+        <a-entity geometry="primitive: dodecahedron" material 
+                  event-set__mouseenter="material.color:lightblue"></a-entity>
+        <a-entity geometry="primitive: dodecahedron" material
+                   event-set__mouseenter="material.color:blue"></a-entity>
+        <a-entity geometry="primitive: dodecahedron" material
+                  event-set__mouseenter="material.color:lightgreen"></a-entity>
+        <a-entity geometry="primitive: dodecahedron" material
+                  event-set__mouseenter="material.color:green"></a-entity>
+        <a-entity geometry="primitive: dodecahedron" material
+                  event-set__mouseenter="material.color:lightyellow"></a-entity>
+        <a-entity geometry="primitive: dodecahedron" material
+                  event-set__mouseenter="material.color:orange"></a-entity>
+        <a-entity geometry="primitive: dodecahedron" material
+                  event-set__mouseenter="material.color:pink"></a-entity>
+        <a-entity geometry="primitive: dodecahedron" material
+                  event-set__mouseenter="material.color:red"></a-entity> 
+        
+      </a-entity>
+     
+    <!--  
+    <a-entity layout="type: circle; radius: 2.5" position="5 4 6" rotation=" 0 90 0">
+        <a-entity geometry="primitive: dodecahedron" material 
+                  event-set__mouseenter="material.color:lightblue"></a-entity>
+        <a-entity geometry="primitive: dodecahedron" material
+                   event-set__mouseenter="material.color:blue"></a-entity>
+        <a-entity geometry="primitive: dodecahedron" material
+                  event-set__mouseenter="material.color:lightgreen"></a-entity>
+        <a-entity geometry="primitive: dodecahedron" material
+                  event-set__mouseenter="material.color:green"></a-entity>
+        <a-entity geometry="primitive: dodecahedron" material
+                  event-set__mouseenter="material.color:lightyellow"></a-entity>
+        <a-entity geometry="primitive: dodecahedron" material
+                  event-set__mouseenter="material.color:orange"></a-entity>
+        <a-entity geometry="primitive: dodecahedron" material
+                  event-set__mouseenter="material.color:pink"></a-entity>
+        <a-entity geometry="primitive: dodecahedron" material=""
+                  event-set__mouseenter="material.color:red"></a-entity>
+      </a-entity>
+      -->
+        
+      <a-box material="color: #98bcbe" geometry="depth: 0.75; height: 20; width: 10.72" position="0 0 -30"
+             event-set__click="material.color: grey; scale: .05 .05 .05;"></a-box>
+      
+      <!-- temple-->
+      <a-box material="" geometry="depth: 5; height: 10; width: 0.75" position="3.81108 0 17.00727" color="#E5BA84"></a-box>
+      <a-box material="" geometry="depth: 5; height: 10; width: 0.75" position="-3.81108 0 17.00727" color="#E5BA84"></a-box>
+      <a-box material="" geometry="depth: 0.5; height: 10; width: 7.622" position="0 0 19.258" color="#E5BA84"></a-box>
+      <a-box material="" geometry="depth: 5; height: 0.5; width: 8.37216" position="0 5 17.00727" color="#E5BA84"></a-box>
+      <a-box position="0 5.75 17.00727" geometry="depth: 5; height:.25; width:8.37216"></a-box>
+      
+      <a-cylinder material="" geometry="height: 0.15; radius: 0.1" position="-3.41103 1.52155 15.3078" rotation="0 0 90"></a-cylinder>
+      <!-- columns -->
+      <a-cylinder material="" geometry="height: 9; radius: 0.25" position="-5.682 0 12.798"></a-cylinder>
+      <a-cylinder material="" geometry="height: 9; radius: 0.25" position="-5.023 0 13.636"></a-cylinder>
+      <a-cylinder material="" geometry="height: 9; radius: 0.25" position="-6.341 0 13.636"></a-cylinder>
+      
+      <a-cylinder material="" geometry="height: 9; radius: 0.25" position="5.682 0 12.798"></a-cylinder>
+      <a-cylinder material="" geometry="height: 9; radius: 0.25" position="5.023 0 13.636"></a-cylinder>
+      <a-cylinder material="" geometry="height: 9; radius: 0.25" position="6.341 0 13.636"></a-cylinder>
+     <!-- stand -->
+      <a-box material="" geometry="primitive: cylinder; height: 1.5; radius: 0.1" position="0 0 18.10851"></a-box>
+      <a-box position="0 .75 18.10851" geometry="height:.15"></a-box>
+      <a-box position="0 0 18.10851" material="" geometry="depth: 0.66; height: 0.1; width: 0.66"></a-box>
+      <a-box position="0 7.67105 17.00727" material="color:#50e716" geometry="primitive: octahedron"></a-box>
+      
+    <!-- platform of all interaction -->
+      <a-box material="" geometry="depth: 62; width: 15" position="0 -0.5" color="#D1654F"></a-box>
+      <a-sky color="skyblue"></a-sky>
+
+          <a-assets>
+
+      <a-mixin id="voxel"
+         geometry="primitive: torus; height: 0.5; width: 0.5; depth: 0.5"
+         material="shader: standard"
+         random-color
+         snap="offset: 0.25 0.25 0.25; snap: 0.5 0.5 0.5"
+      ></a-mixin>
+    </a-assets>
+
+    <!-- Hands. -->
+    <a-entity id="teleHand" hand-controls="left" teleport-controls="type: parabolic; collisionEntities: [mixin='voxel'], #ground"></a-entity>
+    <a-entity id="blockHand" hand-controls="right" controller-cursor intersection-spawn="event: click; mixin: voxel"></a-entity>
+
+    <!-- Camera. -->
+    
+
+      
+    </a-scene>
+
+ 
+
+  </body>
+  
+  <!-- interaction/result ideas: you return the artifact: sky changes color (darkens/brightens), shrine/tower transforms?, 
+  
+      if you do an action in the wrong order: eg press a red button in the shrine, 
+
+
+      use Rhino for artifact? -->
+  
+  
+  <!-- choose one of the libraries that's been pre-built and something you've built,
+  and create some kind of experience; event must happen both in front of and behind
+  you -->
