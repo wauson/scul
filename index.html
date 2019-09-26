@@ -21,6 +21,8 @@
   <body>
     <a-assets>
       <img id="stone" src="https://cdn.glitch.com/cef977b8-48dc-440b-9704-8db3d0cfb305%2Fstone.jpg?v=1568145273574">
+      <a-asset-item id="stormtrooper-obj" src="https://cdn.glitch.com/cef977b8-48dc-440b-9704-8db3d0cfb305%2Fimperian-soldier.obj?v=1569530076572"></a-asset-item>
+      <a-asset-item id="stormtrooper-mtl" src="https://cdn.glitch.com/cef977b8-48dc-440b-9704-8db3d0cfb305%2Fimperian-soldier.json?v=1569530082641"></a-asset-item>
     </a-assets>
     <a-scene rain>
       <!--<a-box color="green" position="0 0 -3.5"
@@ -29,45 +31,48 @@
 
       
     <a-camera position="0 16 0" look-controls wasd-controls="acceleration:125">
-      <a-cursor intersection-spawn="event: click; mixin: voxel"></a-cursor>
+      <a-cursor ></a-cursor>
     </a-camera>
 
       <a-entity environment="preset: goaland; dressing: towers; skyType: gradient; skyColor: green; horizonColor: grey; dressingAmount: 500; ground: canyon"></a-entity>
       <a-entity position="0 15 0">
       <!-- entry ring -->
+      <a-entity obj-model="obj: #stormtrooper-obj; mtl: #stormtrooper-mtl" scale="0.5 0.5 0.5" position="3.028 0 12.083" rotation="0 180 0"></a-entity>
+      <a-entity obj-model="obj: #stormtrooper-obj; mtl: #stormtrooper-mtl" scale="0.5 0.5 0.5" position= "-3.028 0 12.083" rotation="0 180 0"></a-entity>
+        
       <a-entity layout="type: circle; radius: 5" position="0 4 -6">
         <a-entity geometry="primitive: dodecahedron" material 
-                  event-set__mouseenter="material.color:lightblue"></a-entity>
+                  event-set__mouseenter="material.color:#20e8d1"></a-entity>
         <a-entity geometry="primitive: dodecahedron" material
-                   event-set__mouseenter="material.color:blue"></a-entity>
+                   event-set__mouseenter="material.color:#20e884"></a-entity>
         <a-entity geometry="primitive: dodecahedron" material
-                  event-set__mouseenter="material.color:lightgreen"></a-entity>
+                  event-set__mouseenter="material.color:#59e820"></a-entity>
         <a-entity geometry="primitive: dodecahedron" material
-                  event-set__mouseenter="material.color:green"></a-entity>
+                  event-set__mouseenter="material.color:#a2e820"></a-entity>
         <a-entity geometry="primitive: dodecahedron" material
-                  event-set__mouseenter="material.color:lightyellow"></a-entity>
+                  event-set__mouseenter="material.color:#e1e820"></a-entity>
         <a-entity geometry="primitive: dodecahedron" material
-                  event-set__mouseenter="material.color:orange"></a-entity>
+                  event-set__mouseenter="material.color:#e8d420"></a-entity>
         <a-entity geometry="primitive: dodecahedron" material
-                  event-set__mouseenter="material.color:pink"></a-entity>
+                  event-set__mouseenter="material.color:#e8c720"></a-entity>
         <a-entity geometry="primitive: dodecahedron" material
-                  event-set__mouseenter="material.color:red"></a-entity>
+                  event-set__mouseenter="material.color:#e8ac20"></a-entity>
         <a-entity geometry="primitive: dodecahedron" material 
-                  event-set__mouseenter="material.color:lightblue"></a-entity>
+                  event-set__mouseenter="material.color:#e88523"></a-entity>
         <a-entity geometry="primitive: dodecahedron" material
-                   event-set__mouseenter="material.color:blue"></a-entity>
+                   event-set__mouseenter="material.color:#e65a22"></a-entity>
         <a-entity geometry="primitive: dodecahedron" material
-                  event-set__mouseenter="material.color:lightgreen"></a-entity>
+                  event-set__mouseenter="material.color:#e83727"></a-entity>
         <a-entity geometry="primitive: dodecahedron" material
-                  event-set__mouseenter="material.color:green"></a-entity>
+                  event-set__mouseenter="material.color:#eb4034"></a-entity>
         <a-entity geometry="primitive: dodecahedron" material
-                  event-set__mouseenter="material.color:lightyellow"></a-entity>
+                  event-set__mouseenter="material.color:#9120e8"></a-entity>
         <a-entity geometry="primitive: dodecahedron" material
-                  event-set__mouseenter="material.color:orange"></a-entity>
+                  event-set__mouseenter="material.color:#4820e8"></a-entity>
         <a-entity geometry="primitive: dodecahedron" material
-                  event-set__mouseenter="material.color:pink"></a-entity>
+                  event-set__mouseenter="material.color:#2070e8"></a-entity>
         <a-entity geometry="primitive: dodecahedron" material
-                  event-set__mouseenter="material.color:red"></a-entity> 
+                  event-set__mouseenter="material.color:#20b6e8"></a-entity> 
         
       </a-entity>
      
@@ -101,8 +106,13 @@
       <a-box material="" geometry="depth: 0.5; height: 10; width: 7.622" position="0 0 19.258" color="#E5BA84"></a-box>
       <a-box material="" geometry="depth: 5; height: 0.5; width: 8.37216" position="0 5 17.00727" color="#E5BA84"></a-box>
       <a-box position="0 5.75 17.00727" geometry="depth: 5; height:.25; width:8.37216"></a-box>
-      
-      <a-cylinder material="" geometry="height: 0.15; radius: 0.1" position="-3.41103 1.52155 15.3078" rotation="0 0 90"></a-cylinder>
+        
+      <a-cylinder material="side: double" geometry="height: 0.15; radius: 0.1" position="-1.904 1.386 19" rotation="90 0 0" color="red" 
+                  event-set__down="_event: mousedown; _target: #cylinderText; visible: true"
+                  event-set__up="_event: mouseup; _target: #cylinderText; visible: false">
+                          <a-text id="cylinderText" value="Don't touch that button!" align="center" color="red" visible="false" position="1.3 0 0" rotation="90 0 180"
+                geometry="primitive: plane; width: 2.3" material="color: #333"></a-text>
+      </a-cylinder>
       <!-- columns -->
       <a-cylinder material="" geometry="height: 9; radius: 0.25" position="-5.682 0 12.798"></a-cylinder>
       <a-cylinder material="" geometry="height: 9; radius: 0.25" position="-5.023 0 13.636"></a-cylinder>
@@ -115,11 +125,10 @@
       <a-box material="" geometry="primitive: cylinder; height: 1.5; radius: 0.1" position="0 0 18.10851"></a-box>
       <a-box position="0 .75 18.10851" geometry="height:.15"></a-box>
       <a-box position="0 0 18.10851" material="" geometry="depth: 0.66; height: 0.1; width: 0.66"></a-box>
-      <a-box position="0 7.67105 17.00727" material="color:#50e716" geometry="primitive: octahedron"></a-box>
+      <a-box position="0 7.67105 17.00727" material="color:#50e716" geometry="primitive: octahedron" animation="property: rotation; loop:true; dir: normal; from: 0; startEvents: ; pauseEvents: ; resumeEvents: ; to: 360"></a-box>
       
     <!-- platform of all interaction -->
       <a-box material="" geometry="depth: 62; width: 15" position="0 -0.5" color="#D1654F"></a-box>
-      <a-box position="0 8" geometry=""></a-box>
         
       <a-sky color="skyblue"></a-sky>
       </a-entity>
@@ -146,6 +155,10 @@
 
   </body>
   
+  <!-- TODOs and/or ideas to explore:
+        guy standing guard
+          - if you click on him he'll display a text eg "There's normally an increible artifact here but it's gone missing! Can you find it?"
+            clicking on the red button activates text box eg "Don't touch that button!" -->
   <!-- interaction/result ideas: you return the artifact: sky changes color (darkens/brightens), shrine/tower transforms?, 
   
       if you do an action in the wrong order: eg press a red button in the shrine, 
