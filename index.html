@@ -18,28 +18,32 @@
     <script src="https://unpkg.com/super-hands@3.0.0/dist/super-hands.min.js"></script>
   </head>
   
+  <!-- TO-DO: 
+        - Import artifact and transform wall into artifact
+        - Create speech interactions with each guard
+        - Finalize animation (it's looping rn and it shouldn't be)
+  -->
+  
   <body>
     <a-assets>
-      <img id="stone" src="https://cdn.glitch.com/cef977b8-48dc-440b-9704-8db3d0cfb305%2Fstone.jpg?v=1568145273574">
-      <a-asset-item id="stormtrooper-obj" src="https://cdn.glitch.com/cef977b8-48dc-440b-9704-8db3d0cfb305%2Fimperian-soldier.obj?v=1569530076572"></a-asset-item>
-      <a-asset-item id="stormtrooper-mtl" src="https://cdn.glitch.com/cef977b8-48dc-440b-9704-8db3d0cfb305%2Fimperian-soldier.json?v=1569530082641"></a-asset-item>
+      <a-asset-item id="guard-obj" src="https://cdn.glitch.com/cef977b8-48dc-440b-9704-8db3d0cfb305%2Fimperian-soldier.obj?v=1569530076572"></a-asset-item>
+      <a-asset-item id="guard-mtl" src="https://cdn.glitch.com/cef977b8-48dc-440b-9704-8db3d0cfb305%2Fimperian-soldier.json?v=1569530082641"></a-asset-item>
+      <a-asset-item id="stanford-dragon-obj" src="https://cdn.glitch.com/cef977b8-48dc-440b-9704-8db3d0cfb305%2Falduin-dragon.obj?v=1569955684077"></a-asset-item>
+      <a-asset-item id="stanford-dragon-mtl" src="https://cdn.glitch.com/cef977b8-48dc-440b-9704-8db3d0cfb305%2Falduin-dragon.json?v=1569955687440"></a-asset-item>
     </a-assets>
-    <a-scene rain>
+    <a-scene rain >
       <!--<a-box color="green" position="0 0 -3.5"
            event-set__click="material.color: red; scale: 2 2 2;"
            event-set__mouseenter="material.color: blue; scale:0.5 0.5 0.5"></a-box> -->
 
       
-    <a-camera position="0 16 0" look-controls wasd-controls="acceleration:125">
-      <a-cursor ></a-cursor>
-    </a-camera>
+
 
       <a-entity environment="preset: goaland; dressing: towers; skyType: gradient; skyColor: green; horizonColor: grey; dressingAmount: 500; ground: canyon"></a-entity>
       <a-entity position="0 15 0">
       <!-- entry ring -->
-      <a-entity obj-model="obj: #stormtrooper-obj; mtl: #stormtrooper-mtl" scale="0.5 0.5 0.5" position="3.028 0 12.083" rotation="0 180 0"></a-entity>
-      <a-entity obj-model="obj: #stormtrooper-obj; mtl: #stormtrooper-mtl" scale="0.5 0.5 0.5" position= "-3.028 0 12.083" rotation="0 180 0"></a-entity>
-        
+      
+      
       <a-entity layout="type: circle; radius: 5" position="0 4 -6">
         <a-entity geometry="primitive: dodecahedron" material 
                   event-set__mouseenter="material.color:#20e8d1"></a-entity>
@@ -76,30 +80,28 @@
         
       </a-entity>
      
-    <!--  
-    <a-entity layout="type: circle; radius: 2.5" position="5 4 6" rotation=" 0 90 0">
-        <a-entity geometry="primitive: dodecahedron" material 
-                  event-set__mouseenter="material.color:lightblue"></a-entity>
-        <a-entity geometry="primitive: dodecahedron" material
-                   event-set__mouseenter="material.color:blue"></a-entity>
-        <a-entity geometry="primitive: dodecahedron" material
-                  event-set__mouseenter="material.color:lightgreen"></a-entity>
-        <a-entity geometry="primitive: dodecahedron" material
-                  event-set__mouseenter="material.color:green"></a-entity>
-        <a-entity geometry="primitive: dodecahedron" material
-                  event-set__mouseenter="material.color:lightyellow"></a-entity>
-        <a-entity geometry="primitive: dodecahedron" material
-                  event-set__mouseenter="material.color:orange"></a-entity>
-        <a-entity geometry="primitive: dodecahedron" material
-                  event-set__mouseenter="material.color:pink"></a-entity>
-        <a-entity geometry="primitive: dodecahedron" material=""
-                  event-set__mouseenter="material.color:red"></a-entity>
-      </a-entity>
-      -->
-        
-      <a-box material="color: #98bcbe" geometry="depth: 0.75; height: 20; width: 10.72" position="0 0 -30"
+      <a-entity obj-model="obj: #stanford-dragon-obj; mtl: #stanford-dragon-mtl" scale="0.01 0.01 0.01" position= "0 13.8 -25.33" rotation="0 270 0"></a-entity>
+      <a-box material="color: #98bcbe" geometry="depth: 0.75; height: 20; width: 10.72" position="0 0 -26"
              event-set__click="material.color: grey; scale: .05 .05 .05;"></a-box>
       
+      <a-entity id="teleporters">
+        <a-obj-model id="forward" material="side: double; color: #4376e0 " geometry="primitive: cylinder; height: 0.1; radius: 0.125" position="-1 -0.01087 -1.5" obj-model=""
+        event-set__click="_event: click; _target: #transport; position: 0 0 -17.5">
+        </a-obj-model>
+        <a-obj-model id="backward" geometry="primitive: cylinder; height: 0.1; radius: 0.125" position="1 -0.01087 -1.5" material="color: #ff5959; side: double" obj-model=""
+        event-set__click="_event: click; _target: #transport; position: 0 0 6.75">
+        </a-obj-model>
+        <a-obj-model id="forward-return" geometry="primitive: cylinder; height: 0.1; radius: 0.125" position="0 -0.01087 -20" material="color: green; side: double" obj-model=""
+        event-set__click="_event: click; _target: #transport; position: 0 0 0">
+        </a-obj-model>
+        <a-obj-model id="backward-return" geometry="primitive: cylinder; height: 0.1; radius: 0.125" position="0 -0.01087 9" material="color: green; side: double" obj-model=""
+        event-set__click="_event: click; _target: #transport; position: 0 0 0">
+        </a-obj-model>
+      </a-entity>
+
+
+      <a-entity id="back" 
+                animation__click="property: position; to: 0 0 -8; dur: 3500; easing: linear; from: 0 0 0; startEvents: click; pauseEvents: ; resumeEvents: ">
       <!-- temple-->
       <a-box material="" geometry="depth: 5; height: 10; width: 0.75" position="3.81108 0 17.00727" color="#E5BA84"></a-box>
       <a-box material="" geometry="depth: 5; height: 10; width: 0.75" position="-3.81108 0 17.00727" color="#E5BA84"></a-box>
@@ -126,28 +128,41 @@
       <a-box position="0 .75 18.10851" geometry="height:.15"></a-box>
       <a-box position="0 0 18.10851" material="" geometry="depth: 0.66; height: 0.1; width: 0.66"></a-box>
       <a-box position="0 7.67105 17.00727" material="color:#50e716" geometry="primitive: octahedron" animation="property: rotation; loop:true; dir: normal; from: 0; startEvents: ; pauseEvents: ; resumeEvents: ; to: 360"></a-box>
-      
-    <!-- platform of all interaction -->
+      <!-- guards -->
+      <a-entity obj-model="obj: #guard-obj; mtl: #guard-mtl" scale="0.5 0.5 0.5" position="3.028 0 12.083" rotation="0 180 0"
+                event-set__down="_event: mousedown; _target: #soldierText; visible: true"
+                event-set__up="_event: mouseup; _target: #soldierText; visible: false">
+                <a-text id="soldierText" value="So there's a rare item missing." align="center" color="red" visible="false" position="1.3 0 0" rotation="90 0 180"
+                geometry="primitive: plane; width: 2.3" material="color: #333"></a-text>
+      </a-entity>
+      <a-entity obj-model="obj: #guard-obj; mtl: #guard-mtl" scale="0.5 0.5 0.5" position= "-3.028 0 12.083" rotation="0 180 0"></a-entity>
+      </a-entity>
+        <!-- platform of all interaction -->
       <a-box material="" geometry="depth: 62; width: 15" position="0 -0.5" color="#D1654F"></a-box>
         
-      <a-sky color="skyblue"></a-sky>
-      </a-entity>
-          <a-assets>
 
-      <a-mixin id="voxel"
+      </a-entity>
+<!--          <a-assets>
+
+     <a-mixin id="voxel"
          geometry="primitive: box; height: 0.17; width: 0.17; depth: 0.17"
          material="shader: standard"
          random-color
          snap="offset: 0.085 0.085 0.085; snap: 0.17 0.17 0.17">
       </a-mixin>
-    </a-assets>
+    </a-assets> -->
 
     <!-- Hands. -->
     <a-entity id="teleHand" hand-controls="left" teleport-controls="type: parabolic; collisionEntities: [mixin='voxel'], #ground"></a-entity>
     <a-entity id="blockHand" hand-controls="right" controller-cursor intersection-spawn="event: click; mixin: voxel"></a-entity>
 
-    <!-- Camera. -->
+    </a-entity>
 
+    <a-entity id="transport" rotation="0 0 0" position="0 0 0">
+      <a-camera position="0 16 0" look-controls wasd-controls="acceleration:125" >
+        <a-cursor ></a-cursor>
+      </a-camera>
+    </a-entity>
       
     </a-scene>
 
