@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>bird v1</title>
+    <meta name="description" content="Sculpting Realities day 1 Demo">
+    <script src="https://aframe.io/releases/0.9.0/aframe.min.js"></script>
+    <script>  </script>
+  </head>
+  
+  
+  <body> 
+    <a-scene>
+    <a-assets>
+      <a-asset-item id="Model-obj" src="https://cdn.glitch.com/9381d4f6-e927-4881-8eca-2335617ffac2%2FModel%20(4).gltf?v=1572923968746"></a-asset-item>
+      <img id="360background" src="https://cdn.glitch.com/e1a7661f-7739-4f46-8756-07efbf56058b%2F32369705427_8e72d5d87c_o.jpg?v=1571942281371">
+      <img id="aluminum" src="https://cdn.glitch.com/e1a7661f-7739-4f46-8756-07efbf56058b%2Fal2.jpg?v=1571943112005">
+      <a-video id="front" autoplay loop="true" src="https://cdn.glitch.com/9381d4f6-e927-4881-8eca-2335617ffac2%2Ffront.mp4?v=1572981846352"></a-video>
+      <a-video id="back" autoplay loop="true" src="https://cdn.glitch.com/9381d4f6-e927-4881-8eca-2335617ffac2%2Fback.mp4?v=1572981848230"></a-video>
+    </a-assets>
+      <a-camera position="0 0 0"></a-camera>
+      <a-obj-model gltf-model="#Model-obj" position="-1 0 .1" rotation = "98 -35.25 -.29"></a-obj-model>   
+<!--      <a-obj-model gltf-model="#Modeltwo-obj" position="2.5 .25 0" rotation = "90.8 -35.260 -.290" material="src: #aluminum"></a-obj-model>  -->
+
+      <a-video src="#front" width="16" height="9" position="1.25 0 0" rotation="0 -90 0"></a-video>
+      <a-video src="#back" width="16" height="9" position="-1.75 0 0" rotation="0 90 0"></a-video>
+   <!--   <a-box position="2 2 2" scale="1 1 1" material="src: #aluminum"></a-box>  -->
+      <a-sky color="black"></a-sky>
+
+
+      
+    </a-scene>
+
+    
+    
+  </body>
+</html>
